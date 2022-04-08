@@ -1,0 +1,6 @@
+fastapi==0.75.1
+uvicorn==0.17.6
+python-multipart==0.0.5
+celery==5.2.6
+flower==1.0.0
+redis==4.2.2
