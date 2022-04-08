@@ -4,3 +4,4 @@ python-multipart==0.0.5
 celery==5.2.6
 flower==1.0.0
 redis==4.2.2
+python-dotenv==0.20.0

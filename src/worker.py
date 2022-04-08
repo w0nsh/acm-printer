@@ -6,13 +6,17 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from celery import Celery
 
+from dotenv import load_dotenv
+load_dotenv('.env')
 
 DRY_RUN = os.environ.get('DRY_RUN', 'False').lower() in ('true', '1', 't')
+print(f'dry run mode: {DRY_RUN}')
+REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD', 'password')
+REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
 
 celery = Celery(__name__)
-celery.conf.broker_url = os.environ.get("CELERY_BROKER_URL", "redis://localhost:6379")
-celery.conf.result_backend = os.environ.get("CELERY_RESULT_BACKEND", "redis://localhost:6379")
-
+celery.conf.broker_url = f'redis://:{REDIS_PASSWORD}@{REDIS_HOST}:6379/0'
+celery.conf.result_backend = f'redis://:{REDIS_PASSWORD}@{REDIS_HOST}:6379/0'
 
 @celery.task(name="print_task")
 def print_task(name: str, content: str):

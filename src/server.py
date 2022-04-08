@@ -26,7 +26,7 @@ async def print_files(file: UploadFile):
         content += chunk
     content = content.decode('utf-8')
     task = print_task.delay(file.filename, content)
-    return {"name": file.filename, "bytes": len(content), "task-id": task.task_id}
+    return {"name": file.filename, "length": len(content), "task-id": task.task_id}
 
 
 @app.get("/")
