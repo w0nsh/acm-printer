@@ -29,13 +29,13 @@ def print_task(name: str, content: str):
     else:
         proc = subprocess.run(['a2ps', file.name, '-o', ps_file.name])
         if proc.returncode != 0:
-            return False
+            return 'a2ps failed'
 
     if DRY_RUN:
         print(['lp', ps_file.name])
     else:
         proc = subprocess.run(['lp', ps_file.name])
         if proc.returncode != 0:
-            return False
+            return 'lp failed'
 
-    return True
+    return 'OK'

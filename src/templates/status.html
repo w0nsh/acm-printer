@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<script>
+{% if task_status == 'PENDING' or task_status == 'STARTED' %}
+    setTimeout(function(){ window.location.reload(1); }, 2000);
+{% endif %}
+</script>
+</head>
+<body>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Status</th>
+    <th>Result</th>
+  </tr>
+  <tr>
+    <td>{{ task_id }}</td>
+    <td>{{ task_status }}</td>
+    <td>{{ task_result }}</td>
+  </tr>
+</table>
+
+ 
+</body>
+</html>
