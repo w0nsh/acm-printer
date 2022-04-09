@@ -1,5 +1,7 @@
 .env
 env/
+codes/*
+!codes/.gitkeep
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
